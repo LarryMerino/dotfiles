@@ -11,7 +11,7 @@ fi
 
 echo
 echo "👉 Making sure if Rust is installed on the system"
-if command -v brew &>/dev/null; then
+if command -v rustc &>/dev/null; then
   echo "🦀 Rust already instaled"
 else
   echo "Rust was not found on the system"
