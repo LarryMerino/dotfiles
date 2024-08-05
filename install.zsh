@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-echo "👉 Making sure if brew is installed on the system"
+echo "👉 Verifying if Brew is available on the system"
 if command -v brew &>/dev/null; then
   echo "🍺 Brew already instaled"
 else
@@ -10,7 +10,28 @@ else
 fi
 
 echo
-echo "👉 Making sure if Rust is installed on the system"
+echo " Installing Startship prompt"
+brew install starship
+# we need to add the following line to the .zshrc file
+# in order to start the starship prompt
+# eval "$(starship init zsh)"
+# official doc: https://starship.rs
+if ! grep -Fxq 'eval "$(starship init zsh)"' ~/.zshrc; then
+  echo 'eval "$(starship init zsh)"' >> ~/.zshrc
+fi
+
+echo
+echo "👉 Verifying if Alacritty is available on the system"
+if command -v alacritty &>/dev/null; then
+  echo "🚀 Alacritty already instaled"
+else
+  echo "Alacritty was not found on the system"
+  echo "🚀 Performing Alacritty installation"
+  brew install alacritty
+fi
+
+echo
+echo "👉 Verifying if Rust is available on the system"
 if command -v rustc &>/dev/null; then
   echo "🦀 Rust already instaled"
 else
@@ -20,15 +41,27 @@ else
 fi
 
 echo
-echo "🔧 Performing the installation of command line tools"
+echo "🔧 Performing the installation of all NerdFonts"
+brew search '/font-.*-nerd-font/' | awk '{ print $1 }' | xargs -I{} brew install --cask {} || true
+
+echo
+echo "🔧 Performing the installation of IDE's"
 
 echo
 echo "🔧 Installing neovim"
 brew install neovim
 
 echo
-echo "🔧 Installing exa"
-brew install exa
+echo "🔧 Installing Visual Studio Code"
+brew install --cask visual-studio-code
+
+
+echo
+echo "🔧 Performing the installation of command line tools"
+
+echo
+echo "🔧 Installing eza"
+brew install eza
 
 echo
 echo "🔧 Installing bat"

@@ -11,7 +11,7 @@ alias gs='git status -sb' # upgrade your git if -sb breaks for you. it's fun.
 alias gac='git add -A && git commit -m'
 
 # Exa aliases
-alias exal='exa --all --long --header --git --time modified --sort modified'
+alias ezal='eza --all --long --header --git --time modified --sort modified'
 
 # quick editor commands
 alias zshrc="$EDITOR ~/.zshrc"

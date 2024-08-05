@@ -1,0 +1,41 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator.
+
+# Import additional configuration files
+#
+# Imports are loaded in order, skipping all missing files, with the importing
+# file being loaded last. If a field is already present in a previous import, it
+# will be replaced.
+#
+# All imports must either be absolute paths starting with `/`, or paths relative
+# to the user's home directory starting with `~/`.
+#import:
+#  - /path/to/alacritty.toml
+import = [
+    "~/.config/alacritty/window.toml",
+    "~/.config/alacritty/keyboard.toml",
+    "~/.config/alacritty/font.toml",
+]
+
+# Live config reload (changes require restart)
+
+# Default: true
+live_config_reload = true
+
+# You can set shell.program to the path of your favorite shell, e.g. 
+# /bin/zsh. Entries in shell.args are passed as arguments to the shell.
+[shell]
+program = "/bin/zsh"
+args = ["-l"]
+
+
+# All key-value pairs in the [env] section will be added as environment 
+# variables for any process spawned by Alacritty, including its shell. 
+# Some entries may override variables set by alacritty itself.
+[env]
+# TERM variable
+#
+# This value is used to set the `$TERM` environment variable for
+# each instance of Alacritty. If it is not present, alacritty will
+# check the local terminfo database and use `alacritty` if it is
+# available, otherwise `xterm-256color` is used.
+TERM = "xterm-256color"

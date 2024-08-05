@@ -8,7 +8,9 @@
 This project aims to automate the installation of configuration files for various system tools, such as text editors, terminal emulators, etc. This will streamline setting up a new system or replicating the configuration across multiple computers.
 
 ## Installation
-todo!
+
+use the following command in order to install all tools and set configurations  
+`curl -fsSL https://raw.githubusercontent.com/LarryMerino/dotfiles/main/install.zsh | zsh`
 
 ## Contribution
 
