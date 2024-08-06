@@ -60,6 +60,10 @@ echo
 echo "🔧 Performing the installation of command line tools"
 
 echo
+echo "🔧 Installing GitHub CLI"
+brew install gh
+
+echo
 echo "🔧 Installing eza"
 brew install eza
 
