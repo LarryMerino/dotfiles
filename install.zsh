@@ -10,6 +10,16 @@ else
 fi
 
 echo
+echo "⬇️ Getting the dotfiles repository"
+REPO_ZIP_DIR="https://github.com/LarryMerino/dotfiles/archive/refs/heads/main.zip"
+TEMP_DIR=$(mktemp -d)
+curl -L $REPO_ZIP_DIR -o $TEMP_DIR/dotfiles.zip
+unzip -q $TEMP_DIR/dotfiles.zip -d $TEMP_DIR
+echo "📦 Dotfiles repository downloaded"
+echo "📁 Creating .config file if not exist"
+mkdir -p $HOME/.config
+
+echo
 echo " Installing Startship prompt"
 brew install starship
 # we need to add the following line to the .zshrc file
@@ -29,6 +39,11 @@ else
   echo "🚀 Performing Alacritty installation"
   brew install alacritty
 fi
+
+DOT_FILES_DIR="$HOME/.config/"
+echo
+echo "📁 Loading Alacritty configuration in $DOT_FILES_DIR directory"
+cp -r $TEMP_DIR/dotfiles-main/alacritty $DOT_FILES_DIR
 
 echo
 echo "👉 Verifying if Rust is available on the system"
@@ -78,3 +93,7 @@ echo "👉 Installing dependencies for esp-rs: std support"
 echo
 echo "💿 Installing libuv"
 brew install libuv
+
+echo
+echo "🧹 Cleaning temp files and directories"
+rm -rf $TEMP_DIR
